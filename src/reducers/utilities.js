@@ -18,3 +18,15 @@ export const updateItemInArray = (array, itemId, updateItemCallback) => {
     });
     return updateItems;
 };
+
+export const updateUserInArray = (array, password, username, updateUserCallback) => {
+    const updateUsers = array.map (user => {
+        if(user.username !== username && user.password !== password){
+            return user;
+        }
+
+        const updatedUser = updateUserCallback(user);
+        return updatedUser;
+    });
+    return updateUsers;
+};
