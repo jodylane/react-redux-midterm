@@ -74,6 +74,13 @@ it('logs in user', () => {
             password,
             username,
             isLoggedIn: false
+        },
+        {
+            id: 2,
+            email: 'test2@gmail.com',
+            password,
+            username: 'TestMaster',
+            isLoggedIn: false
         }
     ];
     const action = actions.loginUser(password,username);
@@ -84,6 +91,13 @@ it('logs in user', () => {
             password,
             username,
             isLoggedIn: true
+        },
+        {
+            id: 2,
+            email: 'test2@gmail.com',
+            password,
+            username: 'TestMaster',
+            isLoggedIn: false
         }
     ];
 

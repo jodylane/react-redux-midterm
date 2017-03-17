@@ -4,14 +4,18 @@ export const updateObject = (oldObject, newValues) => {
     return Object.assign({}, oldObject, newValues);
 };
 
-export const updateItemInArray = (array, itemId, updateItemCallback) => {
+export const updateItemInArray = (array, action, updateItemCallback) => {
     const updateItems = array.map(item => {
-
-        if(item.id !== itemId){
-            // Since we only want to update one item, preserve all others as they are now
-            return item;
+        if (action.type == 'LOG_IN') {
+            if (item.username !== action.username || item.password !== action.password) {
+                return item;
+            }
+        } else {
+            if (item.id !== action.id) {
+                // Since we only want to update one item, preserve all others as they are now
+                return item;
+            }
         }
-
         // Use the provided callback to create an updated item
         const updatedItem = updateItemCallback(item);
         return updatedItem;
@@ -19,14 +23,3 @@ export const updateItemInArray = (array, itemId, updateItemCallback) => {
     return updateItems;
 };
 
-export const updateUserInArray = (array, password, username, updateUserCallback) => {
-    const updateUsers = array.map (user => {
-        if(user.username !== username && user.password !== password){
-            return user;
-        }
-
-        const updatedUser = updateUserCallback(user);
-        return updatedUser;
-    });
-    return updateUsers;
-};

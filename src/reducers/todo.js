@@ -9,14 +9,14 @@ export const addTodo = (state, action) => {
 };
 
 export const toggleTodo = (state, action) => {
-    const newTodo = util.updateItemInArray(state, action.id, todo => {
+    const newTodo = util.updateItemInArray(state, action, todo => {
         return util.updateObject(todo, {completed: !todo.completed});
     });
     return newTodo;
 };
 
 export const editTodo = (state, action) => {
-    const newTodo = util.updateItemInArray(state, action.id, todo => {
+    const newTodo = util.updateItemInArray(state, action, todo => {
         return util.updateObject(todo, {text: action.text});
     });
     return newTodo;

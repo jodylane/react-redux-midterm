@@ -9,7 +9,7 @@ export const addBio = (state, action) => {
 };
 
 export const editBio = (state, action) => {
-    const newBio = util.updateItemInArray(state, action.id, bio => {
+    const newBio = util.updateItemInArray(state, action, bio => {
         return util.updateObject(bio, {title: action.title});
     });
     return newBio;

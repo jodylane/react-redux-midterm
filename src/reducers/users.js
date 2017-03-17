@@ -11,14 +11,14 @@ export const addUser = (state, action) => {
 };
 
 export const loginUser = (state, action) => {
-    const newUser = util.updateUserInArray(state, action.password, action.username , user => {
-        return util.updateObject(user, {isLoggedIn: !user.isLoggedIn});
+    const newUser = util.updateItemInArray(state, action, item => {
+        return util.updateObject(item, { isLoggedIn: !item.isLoggedIn });
     });
     return newUser;
 };
 
 export const logoutUser = (state, action) => {
-    const newUser = util.updateItemInArray(state, action.id, user => {
+    const newUser = util.updateItemInArray(state, action, user => {
         return util.updateObject(user, {isLoggedIn: !user.isLoggedIn});
     });
     return newUser;
