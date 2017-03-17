@@ -2,9 +2,9 @@ import {createStore, combineReducers} from 'redux';
 import expect, {createSpy, spyOn, isSpy} from 'expect';
 import deepFreeze from 'deep-freeze';
 import * as actions from '../actions/userActions';
-import * as reducers from '../reducers/users';
+import usersReducer from '../reducers/users';
 
-it('creates an action to add users', () => {
+it('creates an action to add users.', () => {
     const email = 'test@gmail.com';
     const password = 'password';
     const username = 'tester';
@@ -23,7 +23,7 @@ it('creates an action to add users', () => {
     ).toEqual(actionAfter);
 });
 
-it('adds a user', () => {
+it('adds a user.', () => {
     const stateBefore = [];
     const email = 'test1@gmail.com';
     const password = 'password';
@@ -43,11 +43,11 @@ it('adds a user', () => {
     deepFreeze(action);
 
     expect(
-        reducers.addUser(stateBefore, action)
+        usersReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });
 
-it('creates an action to login user', () => {
+it('creates an action to login user.', () => {
     const password = 'password';
     const username = 'tester';
     const actionAfter = {
@@ -63,7 +63,7 @@ it('creates an action to login user', () => {
     ).toEqual(actionAfter);
 });
 
-it('logs in user', () => {
+it('logs in user.', () => {
     const email = 'test1@gmail.com';
     const password = 'password';
     const username = 'tester';
@@ -105,11 +105,11 @@ it('logs in user', () => {
     deepFreeze(action);
 
     expect(
-        reducers.loginUser(stateBefore, action)
+        usersReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });
 
-it('creates an action to logout user', () => {
+it('creates an action to logout user.', () => {
     const id = 1;
     const actionAfter = {
         type: 'LOG_OUT',
@@ -123,7 +123,7 @@ it('creates an action to logout user', () => {
     ).toEqual(actionAfter);
 });
 
-it('logs out user', () => {
+it('logs out user.', () => {
     const id = 1;
     const email = 'test1@gmail.com';
     const password = 'password';
@@ -152,6 +152,6 @@ it('logs out user', () => {
     deepFreeze(action);
 
     expect(
-        reducers.logoutUser(stateBefore, action)
+        usersReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });

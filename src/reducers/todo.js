@@ -1,5 +1,5 @@
 import * as util from './utilities';
-export const addTodo = (state, action) => {
+const addTodo = (state, action) => {
     const newTodo = state.concat({
         id: action.id,
         text: action.text,
@@ -8,16 +8,23 @@ export const addTodo = (state, action) => {
     return newTodo;
 };
 
-export const toggleTodo = (state, action) => {
+const toggleTodo = (state, action) => {
     const newTodo = util.updateItemInArray(state, action, todo => {
         return util.updateObject(todo, {completed: !todo.completed});
     });
     return newTodo;
 };
 
-export const editTodo = (state, action) => {
+const editTodo = (state, action) => {
     const newTodo = util.updateItemInArray(state, action, todo => {
         return util.updateObject(todo, {text: action.text});
     });
     return newTodo;
 };
+
+const todosReducer = util.createReducer([],{
+    'ADD_TODO': addTodo,
+    'TOGGLE_TODO': toggleTodo,
+    'EDIT_TODO': editTodo,
+});
+export default todosReducer

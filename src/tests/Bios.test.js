@@ -2,9 +2,9 @@ import { createStore, combineReducers } from 'redux';
 import expect, {createSpy, spyOn, isSpy} from 'expect';
 import deepFreeze from 'deep-freeze';
 import * as actions from '../actions/bioActions';
-import * as reducers from '../reducers/bio';
+import bioReducer from '../reducers/bio';
 
-it('creates an action to add bio', () => {
+it('creates an action to add bio.', () => {
     const id = 0;
     const title = 'Title';
     const actionAfter = {
@@ -20,7 +20,7 @@ it('creates an action to add bio', () => {
     ).toEqual(actionAfter);
 });
 
-it('adds a bio', () => {
+it('adds a bio.', () => {
     const stateBefore = [];
     const title = 'Learn Redux';
     const action = actions.addBio(title);
@@ -35,11 +35,11 @@ it('adds a bio', () => {
     deepFreeze(action);
 
     expect(
-        reducers.addBio(stateBefore, action)
+        bioReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });
 
-it('creates an action to edit bio', () => {
+it('creates an action to edit bio.', () => {
     const id = 1;
     const title = 'Title';
     const actionAfter = {
@@ -55,7 +55,7 @@ it('creates an action to edit bio', () => {
     ).toEqual(actionAfter);
 });
 
-it('edits a bio', () => {
+it('edits a bio.', () => {
     const id = 1;
     const title = 'New Title';
     const stateBefore = [
@@ -76,6 +76,6 @@ it('edits a bio', () => {
     deepFreeze(action);
 
     expect(
-        reducers.editBio(stateBefore, action)
+        bioReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });

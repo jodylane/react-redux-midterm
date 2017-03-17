@@ -23,3 +23,13 @@ export const updateItemInArray = (array, action, updateItemCallback) => {
     return updateItems;
 };
 
+export const createReducer = (initState, handlers) => {
+    const reducer = (state = initState, action) => {
+        if (handlers.hasOwnProperty(action.type)) {
+            return handlers[action.type](state, action)
+        } else {
+            return state
+        }
+    };
+    return reducer;
+};

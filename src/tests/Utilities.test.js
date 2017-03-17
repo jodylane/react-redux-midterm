@@ -71,3 +71,7 @@ it('updateItemInArray returns new array with updated object.', () => {
         })
     ).toEqual(stateAfter);
 });
+
+it('createsReducer returns a reducer function.', () => {
+
+});

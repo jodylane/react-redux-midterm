@@ -2,7 +2,7 @@ import { createStore, combineReducers } from 'redux';
 import expect, {createSpy, spyOn, isSpy} from 'expect';
 import deepFreeze from 'deep-freeze';
 import * as actions from '../actions/todoActions';
-import * as reducers from '../reducers/todo';
+import todosReducer from '../reducers/todo';
 
 it('creates an action to add todo', () => {
     const text = 'Hello World';
@@ -34,7 +34,7 @@ it('adds a todo', () => {
     deepFreeze(action);
 
     expect(
-        reducers.addTodo(stateBefore, action)
+        todosReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });
 
@@ -64,7 +64,7 @@ it('auto increments its id for every todo', () => {
     deepFreeze(action);
 
     expect(
-        reducers.addTodo(statebefore, action)
+        todosReducer(statebefore, action)
     ).toEqual(stateAfter);
 });
 
@@ -103,7 +103,7 @@ it('toggles a todo', () => {
     deepFreeze(action);
 
     expect(
-        reducers.toggleTodo(stateBefore, action)
+        todosReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });
 
@@ -144,6 +144,6 @@ it('edits a todo', () => {
     deepFreeze(action);
 
     expect(
-        reducers.editTodo(stateBefore, action)
+        todosReducer(stateBefore, action)
     ).toEqual(stateAfter);
 });
